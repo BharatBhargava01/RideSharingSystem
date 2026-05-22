@@ -1,36 +1,27 @@
 package com.rideshare.service;
 
-import com.rideshare.model.Driver;
+import com.rideshare.database.RideDAO;
 import com.rideshare.model.Ride;
-import com.rideshare.repository.RideRepository;
-import com.rideshare.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class RideService {
 
-    @Autowired
-    private RideRepository rideRepository;
-
-    @Autowired
-    private UserRepository userRepository;
+    RideDAO rideDAO = new RideDAO();
 
     public Ride addRide(Long driverId, Ride ride) {
-        Driver driver = (Driver) userRepository.findById(driverId)
-                .orElseThrow(() -> new IllegalArgumentException("Driver not found"));
-        
-        ride.setDriver(driver);
-        return rideRepository.save(ride);
+        Ride newRide = new Ride(ride.getRideId(), driverId.intValue(), ride.getSource(), ride.getDestination(), ride.getSeats());
+        rideDAO.addRide(newRide);
+        return newRide;
     }
 
-    public List<Ride> viewAllRides() {
-        return rideRepository.findAll();
+    public void deleteRide(Long id) {
+        rideDAO.deleteRide(id.intValue());
     }
 
-    public void deleteRide(Long rideId) {
-        rideRepository.deleteById(rideId);
+    public List<Ride> getRides() {
+        return rideDAO.getAllRides();
     }
 }

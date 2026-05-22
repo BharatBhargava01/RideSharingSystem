@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rideshare.controller.SearchRideController"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../css/style.css"
+      styleClass="root"
+      style="-fx-padding: 30 40;">
+
+    <VBox spacing="20" alignment="CENTER" styleClass="card-panel" style="-fx-pref-width: 520;">
+        <Label text="Search Rides" styleClass="title-label" />
+        <Label text="Find available rides around the university" styleClass="subtitle-label" style="-fx-padding: 0 0 5 0;"/>
+
+        <HBox spacing="12" alignment="CENTER">
+            <Label text="From:" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="sourceField" promptText="Source" style="-fx-pref-width: 130; -fx-padding: 8;"/>
+
+            <Label text="To:" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="destinationField" promptText="Destination" style="-fx-pref-width: 130; -fx-padding: 8;"/>
+            
+            <Button text="Search" onAction="#search" styleClass="btn-success" style="-fx-padding: 8 20;" />
+        </HBox>
+
+        <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+            <Label text="Matching Results:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <ListView fx:id="resultsListView" style="-fx-pref-height: 180; -fx-pref-width: 460;" />
+        </VBox>
+
+        <HBox spacing="20" alignment="CENTER" style="-fx-padding: 15 0 0 0;">
+            <Button text="Book Selected" onAction="#bookSelectedRide"
+                    styleClass="btn-warning" style="-fx-pref-width: 180;" />
+            
+            <Button text="Back to Dashboard" onAction="#goBack"
+                    styleClass="btn-secondary" style="-fx-pref-width: 180;" />
+        </HBox>
+    </VBox>
+
+</VBox>

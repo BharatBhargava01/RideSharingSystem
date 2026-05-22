@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rideshare.controller.DashboardController"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../css/style.css"
+      styleClass="root"
+      style="-fx-padding: 40;">
+
+    <VBox spacing="25" alignment="CENTER" styleClass="card-panel" style="-fx-pref-width: 400;">
+        <Label text="University Ride-Sharing" styleClass="title-label" />
+        <Label fx:id="welcomeLabel" text="Welcome, User!" styleClass="subtitle-label" style="-fx-font-size: 15;"/>
+
+        <VBox spacing="14" alignment="CENTER" style="-fx-padding: 10 0 10 0;">
+            <Button text="Offer a Ride" onAction="#showOfferRide" 
+                    styleClass="btn-primary" style="-fx-pref-width: 260;" />
+            
+            <Button text="Search Rides" onAction="#showSearchRide" 
+                    styleClass="btn-success" style="-fx-pref-width: 260;" />
+            
+            <Button text="Book a Ride" onAction="#showBookRide" 
+                    styleClass="btn-warning" style="-fx-pref-width: 260;" />
+                    
+            <Button fx:id="adminButton" text="Admin Panel" onAction="#showAdminPanel"
+                    managed="false" visible="false"
+                    styleClass="btn-danger" style="-fx-pref-width: 260;" />
+                    
+            <Button text="Logout" onAction="#logout" 
+                    styleClass="btn-secondary" style="-fx-pref-width: 260;" />
+        </VBox>
+    </VBox>
+
+</VBox>

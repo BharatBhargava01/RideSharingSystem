@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rideshare.controller.OfferRideController"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../css/style.css"
+      styleClass="root"
+      style="-fx-padding: 40;">
+
+    <VBox spacing="25" alignment="CENTER" styleClass="card-panel" style="-fx-pref-width: 440;">
+        <Label text="Offer a Ride" styleClass="title-label" />
+        <Label text="Share your trip with other students" styleClass="subtitle-label" style="-fx-padding: 0 0 10 0;"/>
+
+        <GridPane alignment="CENTER" hgap="15" vgap="18">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" />
+                <ColumnConstraints halignment="LEFT" />
+            </columnConstraints>
+
+            <Label text="Source:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="sourceField" promptText="Enter starting location" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Destination:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="destinationField" promptText="Enter destination location" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Available Seats:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="seatsField" promptText="e.g. 4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        </GridPane>
+
+        <VBox spacing="14" alignment="CENTER" style="-fx-padding: 15 0 0 0;">
+            <Button text="Submit Offer" onAction="#offerRide"
+                    styleClass="btn-primary" style="-fx-pref-width: 260;" />
+            
+            <Button text="Back to Dashboard" onAction="#goBack"
+                    styleClass="btn-secondary" style="-fx-pref-width: 260;" />
+        </VBox>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rideshare.controller.RegisterController"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../css/style.css"
+      styleClass="root"
+      style="-fx-padding: 40 50;">
+
+    <VBox spacing="20" alignment="CENTER" styleClass="card-panel" style="-fx-pref-width: 380;">
+        <Label text="Create Account" styleClass="title-label" />
+        <Label text="Join the university ride-sharing community" styleClass="subtitle-label" style="-fx-padding: 0 0 5 0;"/>
+
+        <VBox spacing="12" alignment="CENTER">
+            <TextField fx:id="nameField" promptText="Full Name" />
+            <TextField fx:id="emailField" promptText="Email Address" />
+            <TextField fx:id="phoneField" promptText="Phone Number" />
+            <PasswordField fx:id="passwordField" promptText="Password" />
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" />
+            <ComboBox fx:id="roleComboBox" promptText="Select Role" style="-fx-pref-width: 260;" />
+        </VBox>
+
+        <Button text="Register Now" onAction="#register" styleClass="btn-success" style="-fx-pref-width: 260; -fx-cursor: hand;" />
+
+        <Hyperlink text="Already have an account? Login" onAction="#goToLogin" styleClass="hyperlink" />
+    </VBox>
+
+</VBox>

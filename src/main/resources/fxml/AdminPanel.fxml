@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rideshare.controller.AdminPanelController"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@../css/style.css"
+      styleClass="root"
+      style="-fx-padding: 30 40;">
+
+    <VBox spacing="20" alignment="CENTER" styleClass="card-panel" style="-fx-pref-width: 520;">
+        <Label text="Admin Dashboard" styleClass="title-label" />
+        <Label text="Monitor university users, active rides, and system data" styleClass="subtitle-label" style="-fx-padding: 0 0 5 0;"/>
+
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Load All Users" onAction="#viewUsers"
+                    styleClass="btn-danger" style="-fx-pref-width: 180;" />
+            
+            <Button text="Load All Rides" onAction="#viewRides"
+                    styleClass="btn-primary" style="-fx-pref-width: 180;" />
+        </HBox>
+
+        <VBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+            <Label text="System Records:" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <ListView fx:id="adminListView" style="-fx-pref-height: 180; -fx-pref-width: 460;" />
+        </VBox>
+
+        <Button text="Back to Dashboard" onAction="#goBack"
+                styleClass="btn-secondary" style="-fx-pref-width: 260; -fx-padding: 10 24;" />
+    </VBox>
+
+</VBox>

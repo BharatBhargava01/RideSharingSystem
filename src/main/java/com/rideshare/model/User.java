@@ -1,35 +1,42 @@
 package com.rideshare.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
-/**
- * Abstract User class utilizing the Single Table Inheritance strategy.
- * All Users (Students, Drivers, Admins) will be stored in one "users" table,
- * differentiated by the "role" column.
- */
-@Entity
-@Table(name = "users")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
-@Data // Lombok annotation to automatically generate Getters, Setters, etc.
 public abstract class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    protected int userId;
+    protected String name;
+    protected String email;
+    protected String phone;
+    protected String password;
 
-    @Column(nullable = false)
-    private String name;
+    public User(int userId, String name, String email, String phone, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    public int getUserId() {
+        return userId;
+    }
 
-    private String phone;
+    public String getName() {
+        return name;
+    }
 
-    @Column(nullable = false)
-    private String password;
+    public String getEmail() {
+        return email;
+    }
 
-    // Common methods like login(), logout() would typically be handled
-    // by Spring Security rather than embedded in the entity class.
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

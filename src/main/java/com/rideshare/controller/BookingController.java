@@ -20,7 +20,7 @@ public class BookingController {
             @RequestParam Long rideId,
             @RequestParam Long studentId) {
 
-        Booking newBooking = bookingService.bookRide(rideId, studentId);
+        Booking newBooking = bookingService.bookRide(rideId.intValue(), studentId.intValue());
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
     }
 }

@@ -26,7 +26,7 @@ public class RideController {
     // Endpoint: GET /api/rides
     @GetMapping
     public ResponseEntity<List<Ride>> getAllRides() {
-        return ResponseEntity.ok(rideService.viewAllRides());
+        return ResponseEntity.ok(rideService.getRides());
     }
 
     // Endpoint: DELETE /api/rides/{id}

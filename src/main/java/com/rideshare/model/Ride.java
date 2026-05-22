@@ -1,42 +1,53 @@
 package com.rideshare.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = "rides")
-@Data
 public class Ride {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rideId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "driver_id", nullable = false)
-    private Driver driver;
-
-    @Column(nullable = false)
+    private int rideId;
+    private int driverId;
     private String source;
-
-    @Column(nullable = false)
     private String destination;
+    private int seats;
 
-    @Column(nullable = false)
-    private LocalDateTime departureTime;
+    public Ride(int rideId,
+                int driverId,
+                String source,
+                String destination,
+                int seats) {
 
-    @Column(nullable = false)
-    private Integer seatsAvailable;
+        this.rideId = rideId;
+        this.driverId = driverId;
+        this.source = source;
+        this.destination = destination;
+        this.seats = seats;
+    }
 
-    private Double fare;
+    public synchronized boolean bookSeat() {
 
-    // Helper method to update seats safely
-    public void decrementSeats() {
-        if (this.seatsAvailable > 0) {
-            this.seatsAvailable--;
-        } else {
-            throw new IllegalStateException("No seats available!");
+        if (seats > 0) {
+            seats--;
+            return true;
         }
+
+        return false;
+    }
+
+    public int getRideId() {
+        return rideId;
+    }
+
+    public int getDriverId(){
+        return driverId;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public int getSeats() {
+        return seats;
     }
 }

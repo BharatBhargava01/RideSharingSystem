@@ -1,32 +1,36 @@
 package com.rideshare.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = "bookings")
-@Data
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
+    private int bookingId;
+    private int rideId;
+    private int studentId;
+    private String status;
 
-    // Many bookings can be linked to one ride
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ride_id", nullable = false)
-    private Ride ride;
+    public Booking(int bookingId,
+                   int rideId,
+                   int studentId,
+                   String status) {
 
-    // Many bookings can be made by one student
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+        this.bookingId = bookingId;
+        this.rideId = rideId;
+        this.studentId = studentId;
+        this.status = status;
+    }
 
-    @Column(nullable = false)
-    private LocalDateTime bookingDate;
+    public int getBookingId() {
+        return bookingId;
+    }
 
-    @Column(nullable = false)
-    private String status; // e.g., "CONFIRMED", "CANCELED", "PENDING"
+    public int getRideId() {
+        return rideId;
+    }
 
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }
