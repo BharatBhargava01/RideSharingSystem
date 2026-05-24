@@ -71,4 +71,39 @@ public class RideDAO {
             e.printStackTrace();
         }
     }
+
+    public Ride getRideById(int rideId) {
+        try {
+            Connection con = DBConnection.getConnection();
+            String query = "SELECT * FROM rides WHERE ride_id = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, rideId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Ride(
+                        rs.getInt("ride_id"),
+                        rs.getInt("driver_id"),
+                        rs.getString("source"),
+                        rs.getString("destination"),
+                        rs.getInt("seats")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void updateRideSeats(int rideId, int seats) {
+        try {
+            Connection con = DBConnection.getConnection();
+            String query = "UPDATE rides SET seats = ? WHERE ride_id = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, seats);
+            ps.setInt(2, rideId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

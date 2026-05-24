@@ -25,6 +25,9 @@
             <Button text="Book a Ride" onAction="#showBookRide" 
                     styleClass="btn-warning" style="-fx-pref-width: 260;" />
                     
+            <Button text="Check Booking" onAction="#showCheckBooking" 
+                    styleClass="btn-info" style="-fx-pref-width: 260;" />
+                    
             <Button fx:id="adminButton" text="Admin Panel" onAction="#showAdminPanel"
                     managed="false" visible="false"
                     styleClass="btn-danger" style="-fx-pref-width: 260;" />

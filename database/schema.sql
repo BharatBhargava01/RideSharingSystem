@@ -19,5 +19,6 @@ CREATE TABLE bookings (
     booking_id SERIAL PRIMARY KEY,
     ride_id INT REFERENCES rides(ride_id),
     student_id INT REFERENCES users(user_id),
-    status VARCHAR(20)
+    status VARCHAR(20),
+    confirmation_id VARCHAR(50) UNIQUE
 );

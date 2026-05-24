@@ -90,8 +90,8 @@ public class SearchRideController {
         }
 
         try {
-            bookingService.bookRide(rideId, studentId);
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Ride successfully booked! Enjoy your journey.");
+            com.rideshare.model.Booking booking = bookingService.bookRide(rideId, studentId);
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Ride successfully booked!\n\nYour Confirmation ID is: " + booking.getConfirmationId() + "\n\nUse this ID on the 'Check Booking' screen to track your ride status.");
             // Refresh search results
             search(event);
         } catch (Exception e) {

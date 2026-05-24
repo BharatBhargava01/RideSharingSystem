@@ -23,4 +23,14 @@ public class BookingController {
         Booking newBooking = bookingService.bookRide(rideId.intValue(), studentId.intValue());
         return new ResponseEntity<>(newBooking, HttpStatus.CREATED);
     }
+
+    // Endpoint: GET /api/bookings/confirm/{confirmationId}
+    @GetMapping("/confirm/{confirmationId}")
+    public ResponseEntity<?> getBookingByConfirmationId(@PathVariable String confirmationId) {
+        Booking booking = bookingService.getBookingByConfirmationId(confirmationId);
+        if (booking == null) {
+            return new ResponseEntity<>("Booking not found with confirmation ID: " + confirmationId, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(booking, HttpStatus.OK);
+    }
 }

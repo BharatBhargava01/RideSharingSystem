@@ -54,6 +54,11 @@ public class DashboardController {
     }
 
     @FXML
+    public void showCheckBooking(ActionEvent event) {
+        switchScene(event, "/fxml/CheckBooking.fxml", "Ride Sharing - Track Booking");
+    }
+
+    @FXML
     public void showAdminPanel(ActionEvent event) {
         switchScene(event, "/fxml/AdminPanel.fxml", "Ride Sharing - Administrative Panel");
     }

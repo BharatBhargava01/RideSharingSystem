@@ -6,6 +6,7 @@ public class Booking {
     private int rideId;
     private int studentId;
     private String status;
+    private String confirmationId;
 
     public Booking(int bookingId,
                    int rideId,
@@ -16,6 +17,20 @@ public class Booking {
         this.rideId = rideId;
         this.studentId = studentId;
         this.status = status;
+        this.confirmationId = "";
+    }
+
+    public Booking(int bookingId,
+                   int rideId,
+                   int studentId,
+                   String status,
+                   String confirmationId) {
+
+        this.bookingId = bookingId;
+        this.rideId = rideId;
+        this.studentId = studentId;
+        this.status = status;
+        this.confirmationId = confirmationId;
     }
 
     public int getBookingId() {
@@ -32,5 +47,9 @@ public class Booking {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getConfirmationId() {
+        return confirmationId;
     }
 }

@@ -33,6 +33,40 @@ public class BookingServiceTest {
         }
     }
 
+    @Test
+    public void testBookRideReducesSeatsAndGeneratesConfirmationId() {
+        try {
+            int driverId = createTestUser("seat_driver", "Driver");
+            int studentId = createTestUser("seat_student", "Student");
+            int rideId = createTestRide(driverId); // Initial seats = 4
+
+            com.rideshare.database.RideDAO rideDAO = new com.rideshare.database.RideDAO();
+            com.rideshare.model.Ride initialRide = rideDAO.getRideById(rideId);
+            assertEquals(4, initialRide.getSeats());
+
+            com.rideshare.model.Booking booking = bookingService.bookRide(rideId, studentId);
+            
+            // 1. Verify confirmation ID is generated and starts with "RS-"
+            assertNotNull(booking.getConfirmationId());
+            assertTrue(booking.getConfirmationId().startsWith("RS-"));
+            
+            // 2. Verify available seats decreased from 4 to 3
+            com.rideshare.model.Ride updatedRide = rideDAO.getRideById(rideId);
+            assertEquals(3, updatedRide.getSeats());
+
+            // 3. Verify we can fetch this booking by confirmation ID
+            com.rideshare.model.Booking fetchedBooking = bookingService.getBookingByConfirmationId(booking.getConfirmationId());
+            assertNotNull(fetchedBooking);
+            assertEquals(booking.getBookingId(), fetchedBooking.getBookingId());
+            assertEquals(booking.getConfirmationId(), fetchedBooking.getConfirmationId());
+            assertEquals(rideId, fetchedBooking.getRideId());
+            assertEquals(studentId, fetchedBooking.getStudentId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("Test failed due to exception: " + e.getMessage());
+        }
+    }
+
     private int createTestUser(String name, String role) throws Exception {
         Connection con = DBConnection.getConnection();
         String query = "INSERT INTO users (name, email, phone, password, role) VALUES (?, ?, ?, ?, ?)";

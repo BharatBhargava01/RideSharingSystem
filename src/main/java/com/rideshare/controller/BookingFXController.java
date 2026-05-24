@@ -59,8 +59,8 @@ public class BookingFXController {
         }
 
         try {
-            bookingService.bookRide(rideId, studentId);
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Ride successfully booked! Have a great ride.");
+            com.rideshare.model.Booking booking = bookingService.bookRide(rideId, studentId);
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Ride successfully booked!\n\nYour Confirmation ID is: " + booking.getConfirmationId() + "\n\nUse this ID on the 'Check Booking' screen to track your ride status.");
             goBack(event);
         } catch (Exception e) {
             e.printStackTrace();
