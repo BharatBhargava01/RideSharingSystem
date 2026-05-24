@@ -28,8 +28,8 @@
             
             <GridPane hgap="15" vgap="10" alignment="CENTER">
                 <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" style="-fx-pref-width: 130;"/>
-                    <ColumnConstraints halignment="LEFT" style="-fx-pref-width: 210;"/>
+                    <ColumnConstraints halignment="RIGHT" prefWidth="130"/>
+                    <ColumnConstraints halignment="LEFT" prefWidth="210"/>
                 </columnConstraints>
 
                 <Label text="Confirmation ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #a0aec0;"/>
