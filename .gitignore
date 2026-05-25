@@ -33,4 +33,3 @@ build/
 .vscode/
 .env
 run.ps1
-expressions.txt
