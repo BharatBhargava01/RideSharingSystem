@@ -5,10 +5,9 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/rideshare";
-
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "***REMOVED***";
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USERNAME");
+    private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     static {
         initializeDatabase();
